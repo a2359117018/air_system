@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzc.air_system.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.zzc.air_system.model.UserDomain">
+        <result column="Id" jdbcType="VARCHAR" property="Id"/>
+        <result column="userName" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="passWord"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickName"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+    </resultMap>
+    <sql id="BASE_TABLE">
+        air_user
+    </sql>
+
+    <sql id="BASE_COLUMN">
+        Id,userName,password,mobile,nickName,email,gender
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        <include refid="BASE_TABLE"/>
+    </select>
+
+    <!--    <select id="login" resultMap="BaseResultMap">
+            SELECT
+            <include refid="BASE_COLUMN"/>
+            FROM
+            <include refid="BASE_TABLE"/>
+            WHERE userName = #{userName} AND password = #{password}
+        </select>
+
+        <select id="retrievalById" resultMap="BaseResultMap">
+            SELECT
+            <include refid="BASE_COLUMN"/>
+            FROM
+            <include refid="BASE_TABLE"/>
+        </select>
+
+        <insert id="insert" parameterType="com.example.demo.model.userEntity">
+            INSERT INTO
+            <include refid="BASE_COLUMN"/>
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                userName,password
+                <if test="phone != null">
+                    phone,
+                </if>
+            </trim>
+            <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+                #{userName},#{password},
+                <if test="phone != null">
+                    #{phone},
+                </if>
+            </trim>
+        </insert>
+
+        <delete id="delete" parameterType="com.example.demo.model.userEntity">
+            delete from
+            <include refid="BASE_TABLE"/>
+            where userId = #{userId}
+        </delete>
+
+        <update id="update" parameterType="com.example.demo.model.userEntity">
+            update
+            <include refid="BASE_TABLE"/>
+            set
+            `userName` = #{userName},`password` = #{password},`phone` = #{phone},`realName` = #{realName}
+            where `userId` = #{userId}
+        </update>-->
+</mapper>
